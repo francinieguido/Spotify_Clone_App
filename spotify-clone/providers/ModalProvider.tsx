@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 
+import Modal from "@/components/Modals";
+
 const ModalProvider = () => {
 
     const [isMounted, setIsMounted] = useState(false);
@@ -17,7 +19,13 @@ const ModalProvider = () => {
 
     return (
         <>
-        Modals!
+        <Modal 
+        title="Test Modal" 
+        description="Test Description"
+        isOpen
+        onChange={() => {}}>
+            Test Children
+        </Modal>
         </>
     )
 };
