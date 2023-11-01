@@ -2,14 +2,24 @@
 
 import {TbPlaylist} from "react-icons/tb";
 import {AiOutlinePlus} from "react-icons/ai";
+import useAuthModal from "@/hooks/useAuthModal";
+import { useUser } from "@/hooks/useUser";
 
 
 
 const Library  = () => {
 
+    // Modal for adding song when logged in
+    const authModal = useAuthModal();
+    const {user} = useUser();
+
     
     const onClick = () =>{
-        // Upload handler
+        // If no user logged, show auth modal
+        if (!user) {
+            return authModal.onOpen();
+        }
+
     };
 
     return (
@@ -29,7 +39,7 @@ const Library  = () => {
                 "/>
             </div>
             <div className="flex flex-col gap-y-2 mt-4 px-3">
-                Songs' List
+                Songs List
             </div>
         </div>
     );
