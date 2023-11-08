@@ -21,7 +21,7 @@ const Player = () => {
     };
 
     return (
-        <div className="fixed bottom-0 bg-black w-full h-[80px] py-2 px-4">
+        <div className="fixed bottom-0 bg-slate-950 w-full h-[80px] py-2 px-4">
             {/*Key in player is for reseting usePlayer hook so user can skip a song*/}
             <PlayerContent key={songUrl} song={song} songUrl={songUrl}/>
         </div>
