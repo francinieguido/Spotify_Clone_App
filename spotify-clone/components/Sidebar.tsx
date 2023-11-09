@@ -6,8 +6,10 @@ import {BiSearch} from "react-icons/bi";
 import Box from "./Box";
 import SidebarItem from "./SidebarItem";
 import Library from "./Library";
+import { twMerge } from "tailwind-merge";
 
 import { Song } from "@/types";
+import usePlayer from "@/hooks/usePlayer";
 
 
 
@@ -23,6 +25,7 @@ const Sidebar : React.FC<SidebarProps> = ({
 
     {/*Client Component Hook for reading current URL */}
     const pathname = usePathname(); 
+    const player = usePlayer();
 
     {/*Cache the result of a calculation between re-renders*/}
     const routes = useMemo(() =>[
@@ -42,7 +45,9 @@ const Sidebar : React.FC<SidebarProps> = ({
     ], [pathname]);
 
     return (
-        <div className="flex h-full">
+        //Songs' cards move 80px up when player is activated
+        <div className={twMerge(`flex h-full`, player.activeId && 'h-[calc(100%-80px)]'
+      )}>
             <div className=" hidden md:flex flex-col gap-y-2 bg-#0d1117 h-full w-[300px] p-2">
                 <Box>
                     <div className="flex flex-col gap-y-4 px-5 py-4">
