@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
         border-transparent
         px-3
         py-3
-        disabled: cursor-not-allowed
+        disabled: pointer
         disabled:opacity-50
         text-slate-900
         font-bold
