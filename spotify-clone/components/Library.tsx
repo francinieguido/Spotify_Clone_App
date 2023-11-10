@@ -21,12 +21,12 @@ const Library: React.FC<LibraryProps>  = ({
 }) => {
 
     // Subscribe modal
-    const subscribeModal = useSubscribeModal();
+    //const subscribeModal = useSubscribeModal();
 
     // Modal for adding song when logged in
     const authModal = useAuthModal();
     const uploadModal = useUploadModal();
-    const {user, subscription} = useUser();
+    const {user} = useUser();
 
     const onPlay = useOnPlay(songs);
 
@@ -36,16 +36,7 @@ const Library: React.FC<LibraryProps>  = ({
         if (!user) {
             return authModal.onOpen();
         }
-
-        // Check for subscription
-
-        if (!subscription) {
-            return subscribeModal.onOpen();
-        }
-
-
         return uploadModal.onOpen();
-
     };
 
     return (

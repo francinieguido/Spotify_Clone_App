@@ -124,3 +124,4 @@ const SubscribeModal: React.FC<SubscribeModalProps> = ({
 }
 
 export default SubscribeModal;
+

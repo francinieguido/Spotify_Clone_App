@@ -1,26 +1,21 @@
+import {Song} from "@/types";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
+import {cookies} from "next/headers";
 
-import { ProductWithPrice } from "@/types";
 
-const getActiveProductsWithPrices = async (): Promise<ProductWithPrice[]> => {
-  const supabase = createServerComponentClient({
-    cookies: cookies
-  });
+const getActiveProductsWithPrices = async () : Promise<Song[]> => {
+    const supabase = createServerComponentClient({
+       cookies: cookies
+    });
 
-  const { data, error } = await supabase
-    .from('products')
-    .select('*, prices(*)')
-    .eq('active', true)
-    .eq('prices.active', true)
-    .order('metadata->index')
-    .order('unit_amount', { foreignTable: 'prices' });
+    //Catch songs
+    const {data, error} = await supabase
+    .from('songs').select('*').order('created_at', {ascending: false});
 
-  if (error) {
-    console.log(error.message);
-  }
-
-  return (data as any) || [];
-}
+    if (error) {
+        console.log(error)
+    }
+    return (data as any) || [];
+};
 
 export default getActiveProductsWithPrices;
